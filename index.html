@@ -1,0 +1,95 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Custom Script Converter</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #fff;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .container {
+    text-align: center;
+  }
+  
+  input[type="text"] {
+    padding: 10px;
+    margin-bottom: 20px;
+    width: 300px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #45a049;
+  }
+  
+  #output {
+    margin-top: 20px;
+  }
+  
+  .glyph {
+    width: 16px;
+    height: auto;
+    margin: 0 2px;
+    display: inline-block;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <input type="text" id="inputText" placeholder="Enter text">
+  <button onclick="convertText()">Convert</button>
+  <div id="output"></div>
+</div>
+
+<script>
+  function convertText() {
+    var inputText = document.getElementById('inputText').value;
+    var outputDiv = document.getElementById('output');
+    outputDiv.innerHTML = '';
+
+    for (var i = 0; i < inputText.length; i++) {
+      var char = inputText.charAt(i);
+      if (char === ' ') {
+        var img = document.createElement('img');
+        img.src = 'glyphs/space.png';
+        img.alt = 'space';
+        img.classList.add('glyph');
+        outputDiv.appendChild(img);
+      } else if (char.match(/[a-z]/i)) {
+        var img = document.createElement('img');
+        img.src = 'glyphs/' + char.toLowerCase() + '.png';
+        img.alt = char;
+        img.classList.add('glyph');
+        outputDiv.appendChild(img);
+      } else {
+        outputDiv.innerHTML += char;
+      }
+    }
+  }
+</script>
+
+</body>
+</html>
