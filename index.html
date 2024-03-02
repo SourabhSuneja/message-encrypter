@@ -74,13 +74,13 @@
       var char = inputText.charAt(i);
       if (char === ' ') {
         var img = document.createElement('img');
-        img.src = 'glyphs/space.png';
+        img.src = 'glyphs/space.PNG';
         img.alt = 'space';
         img.classList.add('glyph');
         outputDiv.appendChild(img);
       } else if (char.match(/[a-z]/i)) {
         var img = document.createElement('img');
-        img.src = 'glyphs/' + char.toLowerCase() + '.png';
+        img.src = 'glyphs/' + char.toLowerCase() + '.PNG';
         img.alt = char;
         img.classList.add('glyph');
         outputDiv.appendChild(img);
